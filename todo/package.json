@@ -1,0 +1,31 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Simple TO-Do List",
+  "main": "index.js",
+  "scripts": {
+    "watch" : "webpack -d --watch",
+   "build" : "webpack",
+   "serve" : "serve ./src/main/resources/static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Marwa-Attia/Simple-Todo-List.git"
+  },
+  "keywords": [
+    "todo"
+  ],
+  "author": "Marwa Attia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marwa-Attia/Simple-Todo-List/issues"
+  },
+  "homepage": "https://github.com/Marwa-Attia/Simple-Todo-List#readme",
+  "devDependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "serve": "^6.4.1",
+    "webpack": "^3.8.1"
+  }
+}
