@@ -4,9 +4,9 @@
   "description": "Simple TO-Do List",
   "main": "index.js",
   "scripts": {
-    "watch" : "webpack -d --watch",
-   "build" : "webpack",
-   "serve" : "serve ./src/main/resources/static"
+    "dev": "webpack -d --watch",
+    "build": "webpack -p",
+    "serve": "serve ./src/main/resources/static"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,16 @@
   },
   "homepage": "https://github.com/Marwa-Attia/Simple-Todo-List#readme",
   "devDependencies": {
+    "axios": "^0.17.0",
+    "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "serve": "^6.4.1",
     "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   }
 }

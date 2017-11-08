@@ -1,34 +1,69 @@
-apply plugin: 'java'
-apply plugin: 'spring-boot'
 
-group = 'com.accenture.me'
-version = '1.0'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
-jar {
-    baseName = 'todo'
-    version =  '0.0.1-SNAPSHOT'
-}
+
+
 
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
     }
 }
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.moowork.node'	
+	
+group = 'com.accenture.me'
+version = '1.0'
+jar {
+	baseName = 'todo'
+	version =  '0.0.1-SNAPSHOT'
+}
+
 repositories {
-        
-     maven { url "http://repo.maven.apache.org/maven2" }
+    mavenCentral()
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+buildscript {
+    repositories {
+        maven {
+        	url 'https://repo.spring.io/libs-snapshot'
+            url "https://plugins.gradle.org/m2/"
+        } 
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
+        classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+    }
 }
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-	testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("junit:junit")
+    compile("org.springframework.boot:spring-boot-starter-web") {
+    	 exclude module: 'org.springframework.boot:spring-boot-starter-logging'
+    }
+    compile("org.springframework.boot:spring-boot-starter-actuator"){
+    	 exclude module: 'org.springframework.boot:spring-boot-starter-logging'
+    }
+	compile('org.springframework.boot:spring-boot-starter-data-jpa'){
+        exclude module: 'org.springframework.boot:spring-boot-starter-logging'
+    }
+    compile('org.springframework.boot:spring-boot-starter-data-rest'){
+        exclude module: 'org.springframework.boot:spring-boot-starter-logging'
+    }
+	testCompile("org.springframework.boot:spring-boot-starter-test") {
+        exclude module: 'commons-logging'
+    }
+	compileOnly('org.springframework.boot:spring-boot-starter-tomcat'){
+        exclude module: 'org.springframework.boot:spring-boot-starter-logging'
+    }
+	testCompile("junit:junit")
     testCompile("info.cukes:cucumber-core:1.2.4")
     testCompile("info.cukes:cucumber-java8:1.2.4")
     testCompile("info.cukes:cucumber-junit:1.2.4")
@@ -36,5 +71,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.8'
+    gradleVersion = '4.3'
 }
