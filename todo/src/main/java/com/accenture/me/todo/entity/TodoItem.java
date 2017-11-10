@@ -8,11 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "TODO_ITEM")
 public class TodoItem {
 	@Id
-	@GeneratedValue
+	@GenericGenerator(name="keyGen" , strategy="increment")
+	@GeneratedValue(generator="keyGen")
 	@Column
 	private long id;
 	@Column

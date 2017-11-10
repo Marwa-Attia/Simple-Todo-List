@@ -1,6 +1,6 @@
 // using ES6 modules
 import { BrowserRouter, Route, Link } from 'react-router-dom';
- 
+
 // using CommonJS modules
 
 import React from 'react';
@@ -47,7 +47,7 @@ export default class TodoList extends React.Component{
                     {todos.map(function(todo, id){
                         return <Todo key={ id } todo={todo} />;
                     })}
-                
+                <Link to={`/add`}>Add</Link>
                 </div>
                 );
         }
