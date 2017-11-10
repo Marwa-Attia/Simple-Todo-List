@@ -16,7 +16,7 @@ class App extends React.Component{
         render() {
           return  (<Switch>
           <Route exact path='/' component={TodoList}/>
-          <Route path='/edit' component={EditToDo}/>
+          <Route path='/edit/:todo_id' component={EditToDo}/>
           <Route path='/add' component={AddTodo}/>        
         </Switch> 
                   )
