@@ -28,9 +28,7 @@ export default class AddTodo extends React.Component {
         }
 
     }
-    handleDueDateChange() {
-        this.setState( { dueDate: event.target.value } );
-    }
+    
     handleSubmit( event ) {
         console.log( JSON.stringify( this.state ) );
         axios.post( this.apiUrl, this.state )
